@@ -14,3 +14,7 @@ scheduler:
   mode: min
   factor: 0.1
   patience: 10
+  in_channels: 3
+  patch_size: 16
+  emb_size: 768
+  img_size: 224
