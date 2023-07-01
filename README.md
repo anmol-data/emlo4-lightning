@@ -31,3 +31,17 @@ docker run -it --volume /workspace/emlo4-lightning:/opt/src/  anmol9696/lightnin
 
 # For evaluating through docker
 docker run -it --volume /workspace/emlo4-lightning:/opt/src/  anmol9696/lightning python src/eval.py experiment=cifar10_example
+
+### Cat Vs Dogs Model
+
+The YAML file in configs/expreiment will override the deafult train, eval and infer properties
+
+# For traning the models
+copper_train experiment=cat_dog data.num_workers=16 
+
+# For traning the models
+copper_eval experiment=cat_dog data.num_workers=16 
+
+# For Inferring
+Place the image to be inferred in data/PetImages_split/infer folder and 
+Run copper_infer experiment=cat_dog data.num_workers=16 
