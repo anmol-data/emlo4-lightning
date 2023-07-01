@@ -26,6 +26,10 @@ data:
     root: ${paths.data_dir}/PetImages_split/train
   test_dataset:
     root: ${paths.data_dir}/PetImages_split/test
+    
+  infer_dataset:
+    root: ${paths.data_dir}/PetImages_split/infer
+
   image_size: 32
 
 compile: False

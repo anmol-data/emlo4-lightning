@@ -1,6 +1,10 @@
 _target_: copper.models.vit_module.VitLitModule
 
 num_classes: 1000
+in_channels: 3
+patch_size: 4
+emb_size: 64
+img_size: 32
 
 optimizer:
   _target_: torch.optim.Adam
@@ -14,7 +18,4 @@ scheduler:
   mode: min
   factor: 0.1
   patience: 10
-  in_channels: 3
-  patch_size: 16
-  emb_size: 768
-  img_size: 224
+  

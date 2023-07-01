@@ -191,17 +191,21 @@ class VitLitModule(LightningModule):
         self,
         optimizer: torch.optim.Optimizer,
         scheduler: torch.optim.lr_scheduler,
-        num_classes=10,
+        num_classes: int,
+        in_channels: int = 3,
+        patch_size: int = 16,
+        emb_size: int = 768,
+        img_size: int = 224
     ):
         super().__init__()
 
         self.save_hyperparameters(logger=False, ignore=["model"])
 
         self.model = ViT(
-            in_channels=3,
-            patch_size=4,
-            emb_size=64,
-            img_size=32,
+            in_channels=self.hparams.in_channels,
+            patch_size=self.hparams.patch_size,
+            emb_size=self.hparams.emb_size,
+            img_size=self.hparams.img_size,
             depth=6,
             num_classes=num_classes,
         )

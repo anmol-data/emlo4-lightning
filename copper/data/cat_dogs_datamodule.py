@@ -11,6 +11,7 @@ class ImageFolderDataModule(LightningDataModule):
         self,
         train_dataset: ImageFolder,
         test_dataset: ImageFolder,
+        infer_dataset: ImageFolder,
         image_size: int = 32,
         batch_size: int = 64,
         num_workers: int = 0,
@@ -30,10 +31,12 @@ class ImageFolderDataModule(LightningDataModule):
 
         train_dataset.transform = self.transforms
         test_dataset.transform = self.transforms
+        infer_dataset.transform = self.transforms
 
         self.data_train = train_dataset
         self.data_val = test_dataset
         self.data_test = test_dataset
+        self.infer_data = infer_dataset
 
     @property
     def num_classes(self):
@@ -47,6 +50,8 @@ class ImageFolderDataModule(LightningDataModule):
             pin_memory=self.hparams.pin_memory,
             shuffle=True,
         )
+    
+    
 
     def val_dataloader(self):
         return DataLoader(
@@ -65,3 +70,5 @@ class ImageFolderDataModule(LightningDataModule):
             pin_memory=self.hparams.pin_memory,
             shuffle=False,
         )
+    
+    
